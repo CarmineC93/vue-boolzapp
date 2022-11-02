@@ -7,6 +7,8 @@
 
 :root{
     --primary-color: #EAEAEA;
+    --sent-message: #D5F9BA;
+    --received-message: #ffff;
 }
 
 /* UTILITY */
@@ -65,8 +67,7 @@ header{
     padding: 0.5rem;
     align-items: center;    
     line-height: 50px;
-    background-color:var(--primary-color);
-    
+    background-color:var(--primary-color);   
 }
 
 .container{
@@ -74,6 +75,27 @@ header{
     height: 80vh;
     margin: 3rem auto;
     display: flex;
+}
+
+.row-sent{
+    justify-content: flex-end;
+
+}
+
+.message{
+    max-width: 45%;
+    min-width: 20%;
+    border-radius: 10px;
+    padding: 1rem 0.5rem 0 1rem;
+    margin: 1rem 2rem;
+}
+
+.sent{
+    background-color: var(--sent-message);
+}
+
+.received{
+    background-color: var(--received-message);
 }
 
 /* SX SIDE */
@@ -140,6 +162,15 @@ vertical-align: middle;
     overflow-y: scroll;
 }
 
+.message .text{
+    padding: 0 0.3rem 1rem 0;
+    flex-grow: 1;
+}
+
+.message .time{
+    align-self: flex-end;
+    padding-bottom: 0.3rem
+}
 
 footer{
     padding: 0.5rem 0;
