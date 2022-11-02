@@ -1,0 +1,40 @@
+/* RESET */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* COMMON */
+html{
+    font-family: 'Lato', sans-serif;
+}
+
+img{
+    max-width: 100%;
+}
+
+.container{
+    width: 70%;
+    height: 80vh;
+    margin: 3rem auto;
+    display: flex;
+
+    /* DEBUG */
+    background-color: aqua;
+}
+
+.preview-chat{
+    height:100%;
+    width: 30%;
+        /* DEBUG */
+        background-color: green;
+}
+
+.active-chat{
+
+    height:100%;
+    width: 70%;
+        /* DEBUG */
+        background-color: greenyellow;
+}

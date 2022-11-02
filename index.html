@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boolzapp</title>
+    <!-- link icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- link style -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- link font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap" rel="stylesheet">
+    <!-- link vue -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+<body>
+
+
+    <div class="container">
+
+        <!-- conversation preview -->
+        <div class="preview-chat">
+            
+            <header>
+                <div class="my-icon"></div>
+                <div class="menu"></div>
+            </header>
+
+            <section class="notifications"> </section>
+            
+            <section class="search-bar"></section>
+
+            <section class="all-chats">
+                <ul>
+                    <li></li>
+                </ul>
+            </section>
+        </div>
+        
+        <!-- private conversation -->
+        <div class="active-chat">
+            <header>
+                <div class="data-contact"></div>
+            </header>
+
+            <div class="messages-area">
+                <div class="message"></div>
+            </div>
+
+            <footer>
+                <span> emoticon icon </span>
+
+                <label for="message">Messaggio da inviare</label>
+                <input type="text" id="message">
+
+                <span> vocal msg icon</span>
+            </footer>
+
+        </div>
+
+
+    </div>
+
+    
+    <!-- link JS -->
+    <script src="js/script.js"></script>
+</body>
+</html>
