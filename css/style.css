@@ -5,6 +5,40 @@
     box-sizing: border-box;
 }
 
+:root{
+    --primary-color: #EAEAEA;
+}
+
+/* UTILITY */
+.flex{
+    display: flex;
+}
+
+.jf-between{
+    justify-content: space-between;
+}
+
+.invisible{
+    display: none;
+}
+
+.f-size07{
+    font-size: 0.7rem;
+}
+
+.f-size06{
+    font-size: 0.6rem;
+}
+
+.column{
+    flex-direction: column;
+}
+
+/* PALETTE */
+.primary-color{
+    background-color: var(--primary-color);
+}
+
 /* COMMON */
 html{
     font-family: 'Lato', sans-serif;
@@ -12,6 +46,27 @@ html{
 
 img{
     max-width: 100%;
+    width: 40px;
+    border-radius: 50%;
+}
+
+i{
+    color: rgb(130, 130, 130);
+    margin-right: 0.4rem;
+    cursor: pointer;
+}
+
+input{
+    border: none;
+}
+
+header{
+    height: 50px;
+    padding: 0.5rem;
+    align-items: center;    
+    line-height: 50px;
+    background-color:var(--primary-color);
+    
 }
 
 .container{
@@ -19,22 +74,85 @@ img{
     height: 80vh;
     margin: 3rem auto;
     display: flex;
-
-    /* DEBUG */
-    background-color: aqua;
 }
 
+/* SX SIDE */
 .preview-chat{
     height:100%;
     width: 30%;
-        /* DEBUG */
-        background-color: green;
+    flex-direction: column;
+    border-right: 1px solid lightgray;
+    background-color:var(--primary-color);
 }
 
-.active-chat{
+.my-icon span, 
+.my-icon img {
+    vertical-align: middle;
+}
 
+.notifications{
+    padding: 0.8rem;
+    background-color: lightskyblue;
+}
+
+.notifications span:first-child{
+    background-color: white;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    margin-right: 0.4rem;
+}
+
+.notifications span:first-child i{
+    color: lightskyblue;
+    transform: translate(35%, 35%);
+}
+
+.notifications a{
+    color: gray;
+}
+
+.search-bar input{
+    width: 95%;
+    margin: 5px;
+    line-height: 1.5rem;
+    padding: 0.3rem;
+}
+
+.all-chats{
+    overflow-y: scroll;
+    flex-grow: 1;
+}
+
+/* DX SIDE */
+.active-chat{
     height:100%;
     width: 70%;
-        /* DEBUG */
-        background-color: greenyellow;
 }
+
+.data-contact img{
+vertical-align: middle;
+}
+
+.messages-area{
+    background-image:  url(../img/mine.jpg);
+    height: calc(80vh - 100px);
+    overflow-y: scroll;
+}
+
+
+footer{
+    padding: 0.5rem 0;
+    height: 50px;
+    background-color:var(--primary-color);
+}
+
+footer span{
+    padding: 0.5rem;
+}
+
+footer input{
+    padding: 0.4rem;
+    flex-grow: 1 ;
+}
+

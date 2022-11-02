@@ -23,16 +23,31 @@
     <div class="container">
 
         <!-- conversation preview -->
-        <div class="preview-chat">
+        <div class="preview-chat flex">
             
-            <header>
-                <div class="my-icon"></div>
-                <div class="menu"></div>
+            <header class="flex jf-between">
+                <div class="my-icon">
+                    <img src="img/avatar_io.jpg" alt="my pic">
+                    <span class="f-size07">Sofia</span>
+                </div>
+                <div class="menu">
+                    <a href=""><i class="fa-solid fa-rotate-right"></i></a>
+                    <a href=""><i class="fa-solid fa-message"></i></a>
+                    <a href=""><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                </div>
             </header>
 
-            <section class="notifications"> </section>
+            <section class="notifications flex"> 
+                <span> <i class="fa-solid fa-bell-slash"></i> </span>
+                <span>
+                    <p class="f-size07">Ricevi notifiche di nuovi messaggi</p> 
+                    <a class="f-size06" href="">Attiva notifiche desktop</a>                
+                </span>
+            </section>
             
-            <section class="search-bar"></section>
+            <section class="search-bar">
+                <input class="f-size06" type="text" placeholder="Cerca o inizia una nuova chat">
+            </section>
 
             <section class="all-chats">
                 <ul>
@@ -43,21 +58,35 @@
         
         <!-- private conversation -->
         <div class="active-chat">
-            <header>
-                <div class="data-contact"></div>
+            <header class="flex jf-between">
+
+                <div class="data-contact">
+                    <img src="img/avatar_1.jpg" alt="">
+                    <span>
+                        <span class="f-size07"> Name </span>
+                        <span class="f-size06"> Ultimo accesso </span>   
+                    </span>
+                 
+                </div>
+
+                <div class="menu">
+                    <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
+                    <a href=""><i class="fa-solid fa-paperclip"></i></a>
+                    <a href=""><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                </div>
             </header>
 
             <div class="messages-area">
                 <div class="message"></div>
             </div>
 
-            <footer>
-                <span> emoticon icon </span>
+            <footer class="flex jf-between">
+                <span> <i class="fa-regular fa-face-smile"></i> </span>
 
-                <label for="message">Messaggio da inviare</label>
-                <input type="text" id="message">
+                <label class="invisible" for="message">Messaggio da inviare</label>
+                <input class="f-size06" type="text" id="message" placeholder="Scrivi un messaggio">
 
-                <span> vocal msg icon</span>
+                <span> <i class="fa-solid fa-microphone"></i> </span>
             </footer>
 
         </div>
