@@ -15,123 +15,109 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap" rel="stylesheet">
     <!-- link vue -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- link Luxon CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.0.3/build/global/luxon.min.js"></script>
 
 </head>
 <body>
 
+    <div class="wrapper" id="app">
 
-    <div class="app container">
-
-        <!-- conversation preview -->
-        <div class="preview-chat flex">
-            
-            <header class="flex jf-between">
-                <div class="my-icon">
-                    <img src="img/avatar_io.jpg" alt="my pic">
-                    <span class="f-size07">Sofia</span>
-                </div>
-                <div class="menu">
-                    <a href=""><i class="fa-solid fa-rotate-right"></i></a>
-                    <a href=""><i class="fa-solid fa-message"></i></a>
-                    <a href=""><i class="fa-solid fa-ellipsis-vertical"></i></a>
-                </div>
-            </header>
-
-            <section class="notifications flex"> 
-                <span> <i class="fa-solid fa-bell-slash"></i> </span>
-                <span>
-                    <p class="f-size07">Ricevi notifiche di nuovi messaggi</p> 
-                    <a class="f-size06" href="">Attiva notifiche desktop</a>                
-                </span>
-            </section>
-            
-            <section class="search-bar">
-                <input class="f-size06" type="text" placeholder="Cerca o inizia una nuova chat">
-            </section>
-
-            <section class="all-chats">
-                <ul>
-                    <li></li>
-                </ul>
-            </section>
-        </div>
-        
-        <!-- private conversation -->
-        <div class="active-chat">
-            <header class="flex jf-between">
-
-                <div class="data-contact">
-                    <img src="img/avatar_1.jpg" alt="">
+        <div class="container">
+    
+            <!-- conversation preview -->
+            <div class="preview-chat flex">
+                
+                <header class="flex jf-between">
+                        <div class="my-icon flex">
+                            <img src="img/avatar_io.jpg" alt="my pic">
+                            <div class="header-name">
+                                <h3 class="f-size07">Sofia</h3>
+                            </div>
+                        </div>
+                    <div class="menu">
+                        <a href=""><i class="fas fa-circle-notch"></i></a>
+                        <a href=""><i class="fa-solid fa-message"></i></a>
+                        <a href=""><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                    </div>
+                </header>
+    
+                <section class="notifications flex"> 
+                    <span> <i class="fa-solid fa-bell-slash"></i> </span>
                     <span>
-                        <span class="f-size07"> Name </span>
-                        <span class="f-size06"> Ultimo accesso </span>   
+                        <p class="f-size07">Ricevi notifiche di nuovi messaggi</p> 
+                        <a class="f-size06" href="">Attiva notifiche desktop</a>                
                     </span>
-                 
-                </div>
-
-                <div class="menu">
-                    <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
-                    <a href=""><i class="fa-solid fa-paperclip"></i></a>
-                    <a href=""><i class="fa-solid fa-ellipsis-vertical"></i></a>
-                </div>
-            </header>
-
-            <div class="messages-area">
-
-                <div class="row-sent flex">
-                    <div class="message sent flex">
-                        <span class="text f-size07">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur et atque sequi aliquam adipisci rerum!</span> 
-                        <span class="time f-size06"> orario</span>
-                    </div>
-                </div>
+                </section>
                 
-                <div class="row">
-                    <div class="message received flex">
-                        <span class="text f-size07">Lorem. </span> 
-                        <span class="time f-size06"> orario</span>
-                    </div>
-                </div>
-
-                <div class="row-sent flex">
-                    <div class="message sent flex">
-                        <span class="text f-size07">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur et atque sequi aliquam adipisci rerum!</span> 
-                        <span class="time f-size06"> orario</span>
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="message received flex">
-                        <span class="text f-size07">Lorem. </span> 
-                        <span class="time f-size06"> orario</span>
-                    </div>
-                </div>
-
-                <div class="row-sent flex">
-                    <div class="message sent flex">
-                        <span class="text f-size07">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur et atque sequi aliquam adipisci rerum!</span> 
-                        <span class="time f-size06"> orario</span>
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="message received flex">
-                        <span class="text f-size07">Lorem. </span> 
-                        <span class="time f-size06"> orario</span>
-                    </div>
-                </div>
-
+                <section class="search-bar flex">
+                    <label for="search"> <i class="fa-solid fa-magnifying-glass"></i> </label>
+                    <input class="f-size06" id="search" type="text" placeholder="Cerca o inizia una nuova chat">
+                </section>
+    
+                <section class="all-chats">
+                    <ul>
+                        <li class="contact flex" v-for="contact, index in contacts">
+                            <div class="contact-image">
+                                <img class :src=`img/avatar${contact.avatar}.jpg` alt="">
+                            </div>
+                            <div class="contact-text flex jf-between f-size07">
+                                <div class="contact-user">
+                                    <h4>{{contact.name}}</h4>
+                                    <p> Ultimo messaggio inviato </p>
+                                </div>
+                                <div class="contact-time">
+                                    <small>{{actualTime}}</small>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
             </div>
+            
+            <!-- private conversation -->
+            <div class="active-chat">
+                <header class="flex jf-between">
+    
+                    <div class="data-contact flex">
+                        <img :src="`img/avatar${contacts[actualContact].avatar}.jpg`" alt="person pic">
+                        <span>
+                            <h3 class="f-size07"> {{ contacts[actualContact].name }} </h3>
+                            <p class="f-size06"> Ultimo accesso </p>   
+                        </span>
+                     
+                    </div>
+    
+                    <div class="menu">
+                        <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
+                        <a href=""><i class="fa-solid fa-paperclip"></i></a>
+                        <a href=""><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                    </div>
+                </header>
+    
+                <div class="messages-area">
+    
+                    <div class="row-sent flex">
+                        <div class="message sent flex">
+                            <span class="text f-size07">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur et atque sequi aliquam adipisci rerum!</span> 
+                            <span class="time f-size06"> orario</span>
+                        </div>
+                    </div>
+                    
 
-            <footer class="flex jf-between">
-                <span> <i class="fa-regular fa-face-smile"></i> </span>
-
-                <label class="invisible" for="message">Messaggio da inviare</label>
-                <input class="f-size06" type="text" id="message" placeholder="Scrivi un messaggio">
-
-                <span> <i class="fa-solid fa-microphone"></i> </span>
-            </footer>
-
-        </div>
+                </div>
+    
+                <footer class="flex jf-between">
+                    <span> <i class="fa-regular fa-face-smile"></i> </span>
+    
+                    <label class="invisible" for="message">Messaggio da inviare</label>
+                    <input class="f-size06" type="text" id="message" placeholder="Scrivi un messaggio">
+    
+                    <span> <i class="fa-solid fa-microphone"></i> </span>
+                </footer>
+    
+            </div>
+    </div>
 
 
     </div>
