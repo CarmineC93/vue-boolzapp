@@ -57,7 +57,10 @@
     
                 <section class="all-chats">
                     <ul>
-                        <li class="contact flex" v-for="contact, index in contacts">
+                        <li 
+                        class="contact flex" 
+                        v-for="(contact, index) in contacts"
+                        @click="actualContact = index">
                             <div class="contact-image">
                                 <img class :src=`img/avatar${contact.avatar}.jpg` alt="">
                             </div>
@@ -97,13 +100,17 @@
     
                 <section class="messages-area">
     
-                    <div class="row-sent flex" v-for="messageObj in messages" >
-                        <div class="message flex">
-                            <span class="text f-size07" v-for="(text, index) in messageObj">
-                                {{contacts[actualContact].messages[index].message}}
-                            </span> 
-                            <span class="time f-size06"> orario</span>
-                        </div>
+                    <div 
+                        class="row sent flex" 
+                        v-for="messageObj in contacts[actualContact].messages" 
+                        :class="messageObj.status"
+                        >
+                            <div class="message flex">
+                                <span class="text f-size07">
+                                    {{messageObj.message}}
+                                </span> 
+                                <span class="time f-size06"> orario</span>
+                            </div>
                     </div>
                     
 

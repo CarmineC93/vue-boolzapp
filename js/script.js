@@ -4,7 +4,7 @@ createApp({
     data(){
         return{
 
-            actualContact : 2,
+            actualContact : 0,
 
             contacts: [
                 {

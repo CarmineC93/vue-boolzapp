@@ -208,19 +208,19 @@ header{
     margin: 0.4rem 2rem;
 }
 
-.row-sent{
+.sent{
     justify-content: flex-end;
 }
 
-.row-received{
+.received{
     justify-content: flex-start;
 }
 
-.row-sent .message{
+.sent .message{
     background-color: var(--sent-message);
 }
 
-.row-received .message{
+.received .message{
     background-color: var(--received-message);
 }
 
