@@ -9,9 +9,7 @@ createApp({
 
         return{
 
-
             actualContact : 0,
-
 
             newMessage : {
                 date : currentTime,
@@ -190,27 +188,23 @@ createApp({
             
 
             this.newMessage.message = '';
-            this.newMessage.date = currentTime;
+            this.newMessage.date = dt.now().setLocale('it').toLocaleString(dt.TIME_SIMPLE);
             console.log(this.newMessage)
 
             const autoMessage = {
-                date: currentTime,
+                date: dt.now().setLocale('it').toLocaleString(dt.TIME_SIMPLE),
                 message: "non posso scrivere ora, ti chiamo tra un po'",
                 status: 'received'
             }
 
             setTimeout(() => {
                 this.contacts[this.actualContact].messages.push(autoMessage);
-            },2000)
+            }, 1000)
 
 
         }
     },
     created(){
-        const now = dt.now().setLocale('it').toLocaleString(dt.TIME_SIMPLE);
-        console.log(now)
-        console.log(this.contacts[this.actualContact].messages)
-
         console.log('Running created')
     }
 }).mount("#app")
