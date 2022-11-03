@@ -3,14 +3,18 @@ const dt = luxon.DateTime;
 
 createApp({
     data(){
+        
+        let currentTime = dt.now().setLocale('it').toLocaleString(dt.TIME_SIMPLE);
+
+
         return{
+
 
             actualContact : 0,
 
-            currentTime : dt.now().setLocale('it').toLocaleString(dt.TIME_SIMPLE),
 
             newMessage : {
-                date : this.currentTime,
+                date : currentTime,
                 message : '',
                 status: 'sent'
             },
@@ -184,12 +188,13 @@ createApp({
         sendMessage(){
             this.contacts[this.actualContact].messages.push({...this.newMessage});
             
+
             this.newMessage.message = '';
-            this.newMessage.date = this.currentTime;
+            this.newMessage.date = currentTime;
             console.log(this.newMessage)
 
             const autoMessage = {
-                date: this.currentTime,
+                date: currentTime,
                 message: "non posso scrivere ora, ti chiamo tra un po'",
                 status: 'received'
             }
@@ -206,7 +211,7 @@ createApp({
         console.log(now)
         console.log(this.contacts[this.actualContact].messages)
 
-
+        console.log('Running created')
     }
 }).mount("#app")
 
