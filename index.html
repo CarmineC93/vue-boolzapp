@@ -70,7 +70,7 @@
                                     <p> Ultimo messaggio inviato </p>
                                 </div>
                                 <div class="contact-time">
-                                    <small>{{actualTime}}</small>
+                                    <small>{{currentTime}}</small>
                                 </div>
                             </div>
                         </li>
@@ -109,7 +109,7 @@
                                 <span class="text f-size07">
                                     {{messageObj.message}}
                                 </span> 
-                                <span class="time f-size06"> orario</span>
+                                <span class="time f-size06 gray"> {{messageObj.date}} </span>
                             </div>
                     </div>
                     
@@ -126,7 +126,7 @@
                         id="message" 
                         placeholder="Scrivi un messaggio"  
                         v-model="newMessage.message"
-                        @keyup-enter="sendMessage"
+                        @keyup.enter="sendMessage"
                         >
     
                     <span> <i class="fa-solid fa-microphone"></i> </span>

@@ -10,6 +10,7 @@
     --primary-color: #EAEAEA;
     --sent-message: #D5F9BA;
     --received-message: #ffff;
+    --time-color: gray;
 
 }
 
@@ -41,6 +42,10 @@
 /* PALETTE */
 .primary-color{
     background-color: var(--primary-color);
+}
+
+.gray {
+    color: var(--time-color);
 }
 
 /* COMMON */

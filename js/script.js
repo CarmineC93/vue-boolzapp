@@ -7,13 +7,13 @@ createApp({
 
             actualContact : 0,
 
+            currentTime : dt.now().setLocale('it').toLocaleString(dt.TIME_SIMPLE),
+
             newMessage : {
                 date : this.currentTime,
                 message : '',
                 status: 'sent'
             },
-
-            currentTime : dt.now().setLocale('it').toLocaleString(dt.TIME_SIMPLE),
 
             contacts: [
                 {
@@ -182,14 +182,30 @@ createApp({
     },
     methods:{
         sendMessage(){
-            this.contacts[this.actualContact].this.messages.push(this.newMessage)
+            this.contacts[this.actualContact].messages.push({...this.newMessage});
             
-        
+            this.newMessage.message = '';
+            this.newMessage.date = this.currentTime;
+            console.log(this.newMessage)
+
+            const autoMessage = {
+                date: this.currentTime,
+                message: "non posso scrivere ora, ti chiamo tra un po'",
+                status: 'received'
+            }
+
+            setTimeout(() => {
+                this.contacts[this.actualContact].messages.push(autoMessage);
+            },2000)
+
+
         }
     },
     created(){
         const now = dt.now().setLocale('it').toLocaleString(dt.TIME_SIMPLE);
         console.log(now)
+        console.log(this.contacts[this.actualContact].messages)
+
 
     }
 }).mount("#app")
