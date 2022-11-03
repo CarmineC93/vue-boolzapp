@@ -1,10 +1,19 @@
 const {createApp} = Vue;
+const dt = luxon.DateTime;
 
 createApp({
     data(){
         return{
 
             actualContact : 0,
+
+            newMessage : {
+                date : this.currentTime,
+                message : '',
+                status: 'sent'
+            },
+
+            currentTime : dt.now().setLocale('it').toLocaleString(dt.TIME_SIMPLE),
 
             contacts: [
                 {
@@ -171,6 +180,18 @@ createApp({
             ] 
         }
     },
+    methods:{
+        sendMessage(){
+            this.contacts[this.actualContact].this.messages.push(this.newMessage)
+            
+        
+        }
+    },
+    created(){
+        const now = dt.now().setLocale('it').toLocaleString(dt.TIME_SIMPLE);
+        console.log(now)
+
+    }
 }).mount("#app")
 
 

@@ -120,7 +120,14 @@
                     <span> <i class="fa-regular fa-face-smile"></i> </span>
     
                     <label class="invisible" for="message">Messaggio da inviare</label>
-                    <input class="f-size06" type="text" id="message" placeholder="Scrivi un messaggio">
+                    <input 
+                        class="f-size06" 
+                        type="text" 
+                        id="message" 
+                        placeholder="Scrivi un messaggio"  
+                        v-model="newMessage.message"
+                        @keyup-enter="sendMessage"
+                        >
     
                     <span> <i class="fa-solid fa-microphone"></i> </span>
                 </footer>
