@@ -95,17 +95,19 @@
                     </div>
                 </header>
     
-                <div class="messages-area">
+                <section class="messages-area">
     
-                    <div class="row-sent flex">
-                        <div class="message sent flex">
-                            <span class="text f-size07">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur et atque sequi aliquam adipisci rerum!</span> 
+                    <div class="row-sent flex" v-for="messageObj in messages" >
+                        <div class="message flex">
+                            <span class="text f-size07" v-for="(text, index) in messageObj">
+                                {{contacts[actualContact].messages[index].message}}
+                            </span> 
                             <span class="time f-size06"> orario</span>
                         </div>
                     </div>
                     
 
-                </div>
+                </section>
     
                 <footer class="flex jf-between">
                     <span> <i class="fa-regular fa-face-smile"></i> </span>

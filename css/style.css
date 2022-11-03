@@ -89,7 +89,7 @@ header{
 .container{
     width: 70%;
     height: 80vh;
-    min-width: 1000px;
+    min-width: 800px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -97,25 +97,7 @@ header{
     display: flex;
 }
 
-.row-sent{
-    justify-content: flex-end;
-}
 
-.message{
-    max-width: 45%;
-    min-width: 20%;
-    border-radius: 10px;
-    padding: 1rem 0.5rem 0 1rem;
-    margin: 1rem 2rem;
-}
-
-.sent{
-    background-color: var(--sent-message);
-}
-
-.received{
-    background-color: var(--received-message);
-}
 
 /* SX SIDE */
 .preview-chat{
@@ -215,6 +197,31 @@ header{
     background-image:  url(../img/mine.jpg);
     height: calc(80vh - 100px);
     overflow-y: scroll;
+    padding-top: 1.5rem;
+}
+
+.message{
+    max-width: 300px;
+    min-width: 60px;
+    border-radius: 10px;
+    padding: 1rem 0.5rem 0 1rem;
+    margin: 0.4rem 2rem;
+}
+
+.row-sent{
+    justify-content: flex-end;
+}
+
+.row-received{
+    justify-content: flex-start;
+}
+
+.row-sent .message{
+    background-color: var(--sent-message);
+}
+
+.row-received .message{
+    background-color: var(--received-message);
 }
 
 .message .text{
