@@ -208,16 +208,34 @@ createApp({
         },
 
         filterChat(){
-            let i = 0;
-            const contact = this.contacts[i].name
-            contact.forEach(letter => {
-                if(!this.searchBarInput.includes(letter)){
-                    this.contacts.visible = false;
 
-                    console.log("lettere combacianti")
+            //prelevo il valore dell'input e lo salvo nei data
+            //ad ogni battitura nel campo input si attiva la funzione
+            //scorrendo il valore delle key name, se questo valore non include
+              //il valore dell'input --> il valore della key visible diventa False
+            // con un v-if nei contatti, quelli che hanno visible false non compariranno
 
-                } 
-            });
+            //scorro l'array di oggetti.
+            for (let i = 0; i< this.contacts.length; i++){
+
+                //salvo in variabile il valore della key
+                const contact = this.contacts[i].name
+
+                //è una stringa
+
+                //ciclo il valore come se fosse un array
+                contact.forEach(letter => {
+                    //se il valore dell'input non include le lettere del nome 
+                    if( !this.searchBarInput.includes(letter)){
+                        //il valore della key visible diventa false
+                        this.contacts[i].visible = false;
+    
+                        console.log("lettere combacianti")
+    
+                    } 
+                });
+
+            }
 
                 
 

@@ -67,6 +67,7 @@
                         class="contact flex" 
                         v-for="(contact, index) in contacts"
 
+                        v-if="contacts.visible === true"
 
                         @click="actualContact = index">
                             <div class="contact-image">
