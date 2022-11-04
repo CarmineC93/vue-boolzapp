@@ -54,6 +54,7 @@
                     <label for="search"> <i class="fa-solid fa-magnifying-glass"></i> </label>
                     <input 
                         @keyup="filterChat"
+                        @keyup.delete="reFilterChat"
                         v-model="searchBarInput"
                         class="f-size06" 
                         id="search" 
@@ -65,11 +66,15 @@
                     <ul>
                         <li 
                         class="contact flex" 
+                        v-show="contact.visible"
+                        
                         v-for="(contact, index) in contacts"
 
-                        v-if="contacts.visible === true"
+                        @click="actualContact = index"
+                        >
 
-                        @click="actualContact = index">
+                        <!-- v-if non funziona perchè ha priorita su v-for e contact non è quindi ancora dichiarato, restiturendo errore -->
+
                             <div class="contact-image">
                                 <img class :src=`img/avatar${contact.avatar}.jpg` alt="">
                             </div>

@@ -211,37 +211,42 @@ createApp({
 
             //prelevo il valore dell'input e lo salvo nei data
             //ad ogni battitura nel campo input si attiva la funzione
-            //scorrendo il valore delle key name, se questo valore non include
-              //il valore dell'input --> il valore della key visible diventa False
+            // se la key name non include il valore dell'input, la key visible diventa False
             // con un v-if nei contatti, quelli che hanno visible false non compariranno
 
             //scorro l'array di oggetti.
             for (let i = 0; i< this.contacts.length; i++){
 
                 //salvo in variabile il valore della key
-                const contact = this.contacts[i].name
+                const contact = this.contacts[i].name.toLowerCase();
 
-                //è una stringa
+                if(!contact.startsWith(this.searchBarInput)){
+                    //il valore della key visible diventa false
+                    this.contacts[i].visible = false;
+                };
 
-                //ciclo il valore come se fosse un array
-                contact.forEach(letter => {
-                    //se il valore dell'input non include le lettere del nome 
-                    if( !this.searchBarInput.includes(letter)){
-                        //il valore della key visible diventa false
-                        this.contacts[i].visible = false;
-    
-                        console.log("lettere combacianti")
-    
-                    } 
-                });
-
+                //quando cancello tutto il testo del campo imput la ricerca si interrompe rimostrando tutti i contatti
+                if(this.searchBarInput === ""){
+                    this.contacts[i].visible = true;
+                }
             }
 
                 
 
             
-        }
+        },
 
+        //con questa funzione cancellando eventuali lettere sbagliate(che quindi hanno settato su false il valore),
+        // se il nuovo valore stringa corrisponde, riporta il valore di visible su true
+        reFilterChat(){
+            for (let i = 0; i< this.contacts.length; i++){
+                const contact = this.contacts[i].name.toLowerCase();
+
+                if(contact.startsWith(this.searchBarInput)){
+                    this.contacts[i].visible = true;
+                };
+            }
+        }
 
     },
     created(){
