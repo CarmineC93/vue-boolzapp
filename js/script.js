@@ -208,29 +208,20 @@ createApp({
         },
 
         filterChat(){
-            //prelevo la stringa inserita dai data
-            //la confronto con le stringhe negli oggetti alla key name
-            //ciclo le lettere con filter
-            //se le
-            for(let i=0; i < this.contacts[i].name ; i++){
-                const contact = this.contacts[this.actualContact].name;
-    
-                if(this.searchBarInput.includes(contact)){
-                    
-                } else{
-                    this.contacts[i].visible = false
-                }
+            let i = 0;
+            const contact = this.contacts[i].name
+            contact.forEach(letter => {
+                if(!this.searchBarInput.includes(letter)){
+                    this.contacts.visible = false;
 
-            }
+                    console.log("lettere combacianti")
 
+                } 
+            });
 
-            // const matchContact = contact.filter((this.searchBarInput) => {
-            //     if(this.searchBarInput.includes(contact)){
-            //         console.log("ciao")
-            //     }
+                
+
             
-
-            // });
         }
 
 
