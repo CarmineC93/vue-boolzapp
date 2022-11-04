@@ -52,7 +52,13 @@
                 
                 <section class="search-bar flex">
                     <label for="search"> <i class="fa-solid fa-magnifying-glass"></i> </label>
-                    <input class="f-size06" id="search" type="text" placeholder="Cerca o inizia una nuova chat">
+                    <input 
+                        @keyup="filterChat"
+                        v-model="searchBarInput"
+                        class="f-size06" 
+                        id="search" 
+                        type="text" 
+                        placeholder="Cerca o inizia una nuova chat">
                 </section>
     
                 <section class="all-chats">
@@ -60,6 +66,9 @@
                         <li 
                         class="contact flex" 
                         v-for="(contact, index) in contacts"
+
+                        v-if="contact.visible === true"
+
                         @click="actualContact = index">
                             <div class="contact-image">
                                 <img class :src=`img/avatar${contact.avatar}.jpg` alt="">
@@ -70,7 +79,7 @@
                                     <p> Ultimo messaggio inviato </p>
                                 </div>
                                 <div class="contact-time">
-                                    <small>{{currentTime}}</small>
+                                    <small>{{}}</small>
                                 </div>
                             </div>
                         </li>

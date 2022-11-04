@@ -11,6 +11,8 @@ createApp({
 
             actualContact : 0,
 
+            searchBarInput: '',
+
             newMessage : {
                 date : currentTime,
                 message : '',
@@ -197,12 +199,41 @@ createApp({
                 status: 'received'
             }
 
+            //per evitare che cambi l'attuale indice nei secondi del setTimeout
+            const actual = this.actualContact;
+
             setTimeout(() => {
-                this.contacts[this.actualContact].messages.push(autoMessage);
+                this.contacts[actual].messages.push(autoMessage);
             }, 1000)
+        },
+
+        filterChat(){
+            //prelevo la stringa inserita dai data
+            //la confronto con le stringhe negli oggetti alla key name
+            //ciclo le lettere con filter
+            //se le
+            for(let i=0; i < this.contacts[i].name ; i++){
+                const contact = this.contacts[this.actualContact].name;
+    
+                if(this.searchBarInput.includes(contact)){
+                    
+                } else{
+                    this.contacts[i].visible = false
+                }
+
+            }
 
 
+            // const matchContact = contact.filter((this.searchBarInput) => {
+            //     if(this.searchBarInput.includes(contact)){
+            //         console.log("ciao")
+            //     }
+            
+
+            // });
         }
+
+
     },
     created(){
         console.log('Running created')
