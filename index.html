@@ -116,7 +116,7 @@
     
                     <div 
                         class="row sent flex" 
-                        v-for="messageObj in contacts[actualContact].messages" 
+                        v-for="(messageObj, index) in contacts[actualContact].messages" 
                         :class="messageObj.status"
                         >
                             <div class="message flex">
@@ -127,13 +127,17 @@
 
                                     <span 
                                         class="show"
-                                        @click="showMe">
+                                        @click="showMe(index)">
                                         <i class="fa-solid fa-chevron-down"></i>
-                                    </span>
-                                        <div class="pop-up-box" v-if="popUp === true">
-                                            <span class="deleter f-size07"> Delete Message </span>
+                                    
+                                        <div class="pop-up-box">
+                                            <span 
+                                                class="deleter f-size07"
+                                                @click="deleteMessage"
+                                                > Delete Message </span>
                                             <span class="f-size07"> Message Info</span>
                                         </div>
+                                    </span>
 
                                     <span class="time f-size06 gray"> {{messageObj.date}} 
 

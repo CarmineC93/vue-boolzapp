@@ -77,8 +77,8 @@ input{
 header{
     height: 50px;
     padding: 0.5rem;
-    align-items: center;    
-    background-color:var(--primary-color);   
+    align-items: center;
+    background-color:var(--primary-color);
 }
 
 /* BODY */
@@ -250,8 +250,14 @@ header{
     padding-bottom: 0.3rem
 }
 
+.show{
+    width: 35px;
+    text-align: end;
+}
 
 .pop-up-box{
+    display: none;
+    text-align: left;
     background-color: #ffffffd8;
     width: 100px;
     height: 50px;
@@ -262,6 +268,14 @@ header{
     right: 10px;
     top: 34px;
     z-index: 20;
+}
+
+.show:hover .pop-up-box{
+    display: block;
+}
+
+.deleter{
+    cursor: pointer;
 }
 
 footer{

@@ -9,8 +9,6 @@ createApp({
 
         return{
 
-            popUp: false,
-
             actualContact : 0,
 
             searchBarInput: '',
@@ -246,8 +244,8 @@ createApp({
             }
         },
 
-        showMe(){
-            this.popUp = !this.popUp; 
+        deleteMessage(index){
+            this.contacts[this.actualContact].messages.pop(index);
         }
 
     },
