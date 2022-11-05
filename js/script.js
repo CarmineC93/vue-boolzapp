@@ -9,6 +9,8 @@ createApp({
 
         return{
 
+            popUp: false,
+
             actualContact : 0,
 
             searchBarInput: '',
@@ -230,10 +232,6 @@ createApp({
                     this.contacts[i].visible = true;
                 }
             }
-
-                
-
-            
         },
 
         //con questa funzione cancellando eventuali lettere sbagliate(che quindi hanno settato su false il valore),
@@ -246,6 +244,10 @@ createApp({
                     this.contacts[i].visible = true;
                 };
             }
+        },
+
+        showMe(){
+            this.popUp = !this.popUp; 
         }
 
     },
