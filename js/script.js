@@ -204,7 +204,7 @@ createApp({
 
             setTimeout(() => {
                 this.contacts[actual].messages.push(autoMessage);
-            }, 1000)
+            }, 2000)
         },
 
         filterChat(){
@@ -243,6 +243,12 @@ createApp({
                 };
             }
         },
+
+        // showMe(index){
+        //     this.contacts[this.actualContact].messages[index] = thisContact
+
+        // },
+
 
         deleteMessage(index){
             this.contacts[this.actualContact].messages.pop(index);

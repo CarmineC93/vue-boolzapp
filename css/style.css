@@ -180,6 +180,16 @@ header{
 
 }
 
+.contact-time{
+    text-align: end;    
+}
+
+.reduce{
+    /* not working? */
+    text-overflow: ellipsis; 
+    overflow: hidden;
+}
+
 .contact:not(:last-child){
     border-bottom: 1px lightgray solid;
 }

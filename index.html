@@ -78,13 +78,17 @@
                             <div class="contact-image">
                                 <img class :src=`img/avatar${contact.avatar}.jpg` alt="">
                             </div>
-                            <div class="contact-text flex jf-between f-size07">
-                                <div class="contact-user">
-                                    <h4>{{contact.name}}</h4>
-                                    <p> Ultimo messaggio inviato </p>
-                                </div>
-                                <div class="contact-time">
-                                    <small>{{}}</small>
+                            <div class="contact-text f-size07">
+                                <div class="flex column">
+
+                                    <div class="contact-user">
+                                        <div class="contact-time">
+                                            <small> {{contact.messages[contact.messages.length - 1].date}} </small>
+                                        </div>
+                                        <h4>{{contact.name}}</h4>
+                                        <p class="reduce f-size06"> {{contact.messages[contact.messages.length - 1].message}} </p>
+                                    </div>
+
                                 </div>
                             </div>
                         </li>
@@ -126,8 +130,10 @@
                                 <span class="flex column f-end">
 
                                     <span 
-                                        class="show"
-                                        @click="showMe(index)">
+                                        class="show" >
+                                        <!-- @click="showMe(index)" -->
+                                        
+
                                         <i class="fa-solid fa-chevron-down"></i>
                                     
                                         <div class="pop-up-box">
