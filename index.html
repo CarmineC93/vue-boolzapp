@@ -53,13 +53,13 @@
                 <section class="search-bar flex">
                     <label for="search"> <i class="fa-solid fa-magnifying-glass"></i> </label>
                     <input 
-                        @keyup="filterChat"
-                        @keyup.delete="reFilterChat"
-                        v-model="searchBarInput"
-                        class="f-size06" 
-                        id="search" 
-                        type="text" 
-                        placeholder="Cerca o inizia una nuova chat">
+                    @keyup="filterChat"
+                    v-model="searchBarInput"
+                    class="f-size06" 
+                    id="search" 
+                    type="text" 
+                    placeholder="Cerca o inizia una nuova chat">
+                    <!-- @keyup.delete="reFilterChat" -->
                 </section>
     
                 <section class="all-chats">
@@ -130,13 +130,14 @@
                                 <span class="flex column f-end">
 
                                     <span 
-                                        class="show" >
-                                        <!-- @click="showMe(index)" -->
+                                        class="show" 
+                                        @click.stop="toggleMessageMenu(index)">
                                         
 
                                         <i class="fa-solid fa-chevron-down"></i>
                                     
-                                        <div class="pop-up-box">
+                                        
+                                        <div class="pop-up-box" v-if="activeMessage.messageIndex === index && activeMessage.visible">
                                             <span 
                                                 class="deleter f-size07"
                                                 @click="deleteMessage"

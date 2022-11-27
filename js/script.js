@@ -12,6 +12,10 @@ createApp({
             actualContact : 0,
 
             searchBarInput: '',
+            activeMessage: {
+                messageIndex: null,
+                visible: null,
+              },
 
             newMessage : {
                 date : currentTime,
@@ -207,34 +211,44 @@ createApp({
             }, 2000)
         },
 
-        filterChat(){
-
-            //prelevo il valore dell'input e lo salvo nei data
-            //ad ogni battitura nel campo input si attiva la funzione
-            // se la key name non include il valore dell'input, la key visible diventa False
-            // con un v-if nei contatti, quelli che hanno visible false non compariranno
-
-            //scorro l'array di oggetti.
-            for (let i = 0; i< this.contacts.length; i++){
-
-                //salvo in variabile il valore della key
-                const contact = this.contacts[i].name.toLowerCase();
-
-                if(!contact.startsWith(this.searchBarInput)){
-                    //il valore della key visible diventa false
-                    this.contacts[i].visible = false;
-                };
-
-                //quando cancello tutto il testo del campo imput la ricerca si interrompe rimostrando tutti i contatti
-                if(this.searchBarInput === ""){
-                    this.contacts[i].visible = true;
-                }
-            }
+        filterChat() {
+            this.contacts.forEach((contact) => {
+                contact.visible = contact.name.toLowerCase().includes(this.searchBarInput.toLowerCase());  //---> true / false
+            });
         },
+            
+            //ALTRO MIO MODO, che anzichè usare includes() usa funzione startWith() che a quanto parte quando si cancella parte della ricerca per un errore non
+            //ripartire la ricerca ad ogni lettera
 
-        //con questa funzione cancellando eventuali lettere sbagliate(che quindi hanno settato su false il valore),
-        // se il nuovo valore stringa corrisponde, riporta il valore di visible su true
-        reFilterChat(){
+            /*filterChat(){
+    
+                //prelevo il valore dell'input e lo salvo nei data
+                //ad ogni battitura nel campo input si attiva la funzione
+                // se la key name non include il valore dell'input, la key visible diventa False
+                // con un v-if nei contatti, quelli che hanno visible false non compariranno
+    
+                //scorro l'array di oggetti.
+                for (let i = 0; i< this.contacts.length; i++){
+    
+                    //salvo in variabile il valore della key
+                    const contact = this.contacts[i].name.toLowerCase();
+    
+                    if(!contact.startsWith(this.searchBarInput)){
+                        //il valore della key visible diventa false
+                        this.contacts[i].visible = false;
+                    };
+    
+                    //quando cancello tutto il testo del campo imput la ricerca si interrompe rimostrando tutti i contatti
+                    if(this.searchBarInput === ""){
+                        this.contacts[i].visible = true;
+                    }
+                }
+            },
+
+
+        con questa funzione cancellando eventuali lettere sbagliate(che quindi hanno settato su false il valore),
+         se il nuovo valore stringa corrisponde, riporta il valore di visible su true
+         reFilterChat(){
             for (let i = 0; i< this.contacts.length; i++){
                 const contact = this.contacts[i].name.toLowerCase();
 
@@ -242,18 +256,33 @@ createApp({
                     this.contacts[i].visible = true;
                 };
             }
-        },
+        }, */
 
-        // showMe(index){
-        //     this.contacts[this.actualContact].messages[index] = thisContact
 
-        // },
-
+        resetMessageMenu() {
+            this.activeMessage.messageIndex = null;
+            this.activeMessage.visible = null;
+          },
 
         deleteMessage(index){
-            this.contacts[this.actualContact].messages.pop(index);
-        }
+            this.contacts[this.actualContact].messages.splice(index, 1);
+            this.resetMessageMenu();
+        },
 
+        toggleMessageMenu(index) {
+            // Se clicco su un messaggio, il menu viene visualizzato
+            // Se clicco di nuovo sullo stesso messaggio si nasconde
+            // altrimenti se clicco su un'altro messaggio
+            // Si nasconde dal messaggio presende e si visualizza nel messaggio cliccato
+            if (index === this.activeMessage.messageIndex) {
+              // caso click sullo stesso messaggio
+              this.activeMessage.visible = !this.activeMessage.visible;
+            } else {
+              //  clicco su un messaggio diverso
+              this.activeMessage.messageIndex = index;
+              this.activeMessage.visible = true;
+            }
+          },
     },
     created(){
         console.log('Running created')
